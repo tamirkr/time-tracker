@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 ">
+            <h1>Time tracker</h1><hr >
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Enter a name..." ng-model="$ctrl.name">
+                  <span class="input-group-btn">
+                      <button class="btn btn-info" type="button" ng-click="$ctrl.add()">
+                          <span class="glyphicon glyphicon-time"></span>
+                      </button>
+                  </span>
+            </div>
+            <table class="table table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th width="30px">Name</th>
+                    <th width="30px">Time</th>
+                    <th width="30px">Actions</th>
+                    <th width="30px">Time Passed</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="people in $ctrl.peoples">
+                    <td>{{people.name}}</td>
+                    <td>{{people.passedTime | hhmmss}}</td>
+                    <td>
+                        <button id="pause" ng-disabled="!people.btns" class="btn btn-success" ng-click="$ctrl.pause(people)">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </button>
+                        <button id="play" ng-disabled="!people.btns" class="btn btn-info"  ng-click="$ctrl.play(people)">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                        <button id="stop" ng-disabled="!people.btns" class="btn btn-danger"  ng-click="$ctrl.stop(people, $index)">
+                            <span class="glyphicon glyphicon-stop"></span>
+                        </button>
+                    </td>
+                    <td style="color: red;">{{ people.endtime }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
